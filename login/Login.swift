@@ -24,4 +24,9 @@ struct LoginManager {
     func login(id: String, password: String) -> Bool {
         return isValidID(id) && isValidPassword(password)
     }
+
+    func validate(id: String, password: String) throws {
+        guard isValidID(id) else { throw LoginError.invalidID }
+        guard isValidPassword(password) else { throw LoginError.invalidPassword }
+    }
 }
